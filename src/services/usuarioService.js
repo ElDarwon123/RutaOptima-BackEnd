@@ -12,7 +12,7 @@ class UsuarioService {
     if (!usuario || !(await usuario.validarPassword(password))) {
       throw new Error('Credenciales inválidas');
     }
-    return jwt.sign({ userId: usuario.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ user: usuario }, process.env.JWT_SECRET, { expiresIn: '1h' });
   }
 
   async obtenerUsuario(id) {

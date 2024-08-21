@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 
 // Rutas
+
 app.use('/api/auth', authRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/ubicaciones', ubicacionRoutes);
@@ -25,7 +26,7 @@ app.use(errorHandler);
 // Iniciar el servidor
 sequelize.sync().then(() => {
   console.log('Base de datos conectada');
-  app.listen(process.env.PORT, () => console.log(`Servidor corriendo en el puerto ${process.env.PORT}`));
+  app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`));
 }).catch(err => console.log('Error al conectar con la base de datos:', err));
 
 module.exports = app;
