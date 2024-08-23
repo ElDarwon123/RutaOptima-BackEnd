@@ -4,9 +4,13 @@ exports.registro = async (req, res) => {
   try {
     const { email, password } = req.body;
     await usuarioService.crearUsuario(email, password);
+    console.log(req.body);
+    
     res.status(201).json({ mensaje: 'Usuario registrado exitosamente' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.log(error);
+    
+    res.status(400).json({ error: error.message });
   }
 };
 

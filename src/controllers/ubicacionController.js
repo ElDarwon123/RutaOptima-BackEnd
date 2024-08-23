@@ -6,7 +6,9 @@ exports.crearUbicacion = async (req, res) => {
     const ubicacion = await ubicacionService.crearUbicacion(nombre, posX, posY, req.userData.userId);
     res.status(201).json(ubicacion);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.log(error);
+    
+    res.status(400).json({ error: error.message });
   }
 };
 

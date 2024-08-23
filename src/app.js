@@ -6,14 +6,20 @@ const ubicacionRoutes = require('./router/ubicacionRouter');
 const conexionRoutes = require('./router/conexionRouter');
 const rutaRoutes = require('./router/rutaRouter');
 const errorHandler = require('./middleware/errorHandler');
+const cors = require('cors')
 require('dotenv').config();
 
 const app = express();
 
+let corsOption = {
+  origin: ['*']
+
+}
+
 app.use(express.json());
 
 // Rutas
-
+app.use(cors({origin: 'http://localhost:5173'}))
 app.use('/api/auth', authRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/ubicaciones', ubicacionRoutes);
